@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import ProtectedRoute from "./homeSec/Protectedroute";
 
 import HomePage from "./homeSec/HomePage";
-import Register from "./homeSec/Register";
+import Register from "./homeSec/register";
 import AdminPage from "./adminSec/AdminPage";
 import CreateTeam from "./adminSec/menu/CreateTeam";
 import Addplayers from "./adminSec/menu/AddPlayers";
