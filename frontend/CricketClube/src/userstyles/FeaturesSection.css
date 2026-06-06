@@ -1,0 +1,242 @@
+/* =========================
+   FULL DARK THEME UI
+========================= */
+
+.FeatureSectionPage{
+    background-color: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   CARDS SECTION
+========================= */
+
+.card{
+    width: 100%;
+    max-width: 360px;
+
+    background: #111 !important;
+
+    border: 1px solid rgba(255,255,255,0.1) !important;
+
+    border-radius: 20px !important;
+
+    overflow: hidden;
+
+    transition: 0.4s ease-in-out;
+
+    box-shadow: 0 8px 25px rgba(255,255,255,0.05);
+}
+
+.card:hover{
+    transform: translateY(-10px);
+
+    box-shadow: 0 12px 35px rgba(255, 193, 7, 0.2);
+
+    border-color: #ffc107 !important;
+}
+
+.card-img-top{
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-body{
+    padding: 25px;
+}
+
+.card-text{
+    color: #b0b0b0;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+/* =========================
+   COUNT SECTION
+========================= */
+
+.count-up-text{
+    color: #ffc107;
+
+    font-size: 60px;
+
+    font-weight: bold;
+}
+
+.col-md-3 p,
+.col-6 p{
+    color: #b0b0b0 !important;
+
+    font-size: 18px;
+
+    letter-spacing: 1px;
+}
+
+/* =========================
+   MAHI SECTION
+========================= */
+
+.mahi{
+    width: 100%;
+    max-width: 500px;
+
+    height: auto;
+
+    border-radius: 25px;
+
+    object-fit: cover;
+
+    box-shadow: 0 10px 35px rgba(255,255,255,0.08);
+
+    transition: 0.4s ease-in-out;
+}
+
+.mahi:hover{
+    transform: scale(1.03);
+}
+
+.custom-heading{
+    color: #d0d0d0 !important;
+
+    font-size: 32px;
+
+    line-height: 1.6;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.MuiButton-contained{
+    background: #ffc107 !important;
+
+    color: black !important;
+
+    font-weight: bold !important;
+
+    padding: 12px 28px !important;
+
+    border-radius: 12px !important;
+
+    transition: 0.3s ease-in-out !important;
+}
+
+.MuiButton-contained:hover{
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4) !important;
+}
+
+.stats-header {
+  margin-bottom: 60px;
+}
+
+.stats-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffc107;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.stats-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+    .card{
+        max-width: 350px;
+    }
+
+    .count-up-text{
+        font-size: 42px;
+    }
+
+    .custom-heading{
+        font-size: 24px;
+        margin-top: 30px;
+    }
+
+    .mahi{
+        margin-top: 40px;
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 576px) {
+
+    .container{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .card{
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .card-img-top{
+        height: 220px;
+    }
+
+    .card-text{
+        font-size: 14px;
+    }
+
+    .count-up-text{
+        font-size: 34px;
+    }
+
+    .col-6{
+        margin-bottom: 25px;
+    }
+
+    .col-6 p{
+        font-size: 15px;
+    }
+
+    .custom-heading{
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .MuiButton-contained{
+        width: 100%;
+    }
+
+    .mahi{
+        margin-top: 25px;
+        border-radius: 18px;
+    }
+
+     .stats-title {
+    font-size: 1.8rem;
+  }
+
+  .stats-subtitle {
+    font-size: 0.9rem;
+    padding: 0 15px;
+  }
+}

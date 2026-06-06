@@ -1,0 +1,251 @@
+body {
+  background: black;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.control-container {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.control-card {
+  width: 95%;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.icon-circle {
+  width: 90px;
+  height: 90px;
+  margin: auto;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2bb3f3, #5b5be7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.control-card h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.match-select {
+  width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 0 auto 30px auto;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.team-section {
+  margin-top: 30px;
+}
+
+.team-section h2 {
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+th,
+td {
+  border: 1px solid white;
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+td input {
+  width: 80px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+}
+
+.result-section {
+  margin-top: 40px;
+}
+
+.result-section h2 {
+  color: white;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.result-grid input {
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+}
+
+.save-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  background: linear-gradient(90deg, #2bb3f3, #5b5be7);
+}
+
+.save-btn:hover {
+  opacity: 0.9;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 992px) {
+  .control-container {
+    padding: 20px 10px;
+  }
+
+  .control-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .control-card table {
+    font-size: 13px;
+  }
+
+  .control-card input {
+    width: 60px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .control-container {
+    padding: 10px;
+  }
+
+  .control-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .control-card h1 {
+    font-size: 22px;
+  }
+
+  .control-card h2 {
+    font-size: 18px;
+    margin-top: 25px;
+  }
+
+  .icon-circle {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+
+  .match-select {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  /* table scroll */
+  .control-card table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .control-card th,
+  .control-card td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .control-card input {
+    width: 55px;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .score-summary h3,
+  .score-summary h4 {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .save-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+@media (max-width: 480px) {
+  .match-select{
+    width: 100%;
+        font-size: 13px;
+        padding: 10px;
+  }
+  .control-card {
+    padding: 10px;
+  }
+
+  .control-card h1 {
+    font-size: 20px;
+  }
+
+  .control-card h2 {
+    font-size: 16px;
+  }
+
+  .control-card th,
+  .control-card td {
+    font-size: 11px;
+    padding: 6px;
+  }
+
+  .control-card input {
+    width: 50px;
+    font-size: 11px;
+    padding: 5px;
+  }
+
+  .score-summary h3,
+  .score-summary h4 {
+    font-size: 12px;
+  }
+
+  .save-btn {
+    font-size: 14px;
+  }
+}

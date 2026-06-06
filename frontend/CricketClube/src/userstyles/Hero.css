@@ -1,0 +1,204 @@
+
+.hero-section{
+
+    min-height: 75vh;   /* reduced from 100vh */
+
+    padding-top: 40px;   /* less top space */
+
+    padding-bottom: 20px;   /* less bottom space */
+
+    background:
+      linear-gradient(
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.85)
+      ),
+      url("/stadium.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    padding: 20px;
+}
+
+/* =========================
+   MAIN HEADLINE
+========================= */
+
+.adminHeadline {
+
+    text-align: center;
+
+    margin-top: 4%;
+
+    color: white;
+
+    font-size: 70px;
+
+    font-weight: bold;
+
+    letter-spacing: 12px;
+
+    font-family: Arial, sans-serif;
+
+    width: 100%;
+
+    overflow: hidden;
+}
+/* =========================
+   LETTER ANIMATION
+========================= */
+
+.headlineLetter{
+
+    display: inline-block;
+
+    opacity: 0;
+
+    transform: translateY(80px) scale(0.8);
+
+    animation: revealText 0.6s forwards;
+
+    background: linear-gradient(
+      90deg,
+      #ffffff,
+      #ffc107,
+      #ffffff
+    );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+      0 0 10px rgba(255,255,255,0.15),
+      0 0 25px rgba(255,193,7,0.2);
+
+    font-size: 4rem;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+/* =========================
+   SECOND HEADING
+========================= */
+
+.future-heading{
+
+    color: white;
+
+    margin-top: 20px;
+
+    font-size: 2.2rem;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+      0 0 15px rgba(255,255,255,0.15);
+
+    animation: fadeUp 1.2s ease forwards;
+
+    opacity: 0;
+
+    animation-delay: 2s;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes revealText{
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px){
+
+    .headlineLetter{
+
+        font-size: 2.8rem;
+
+        letter-spacing: 2px;
+    }
+
+    .future-heading{
+
+        font-size: 1.7rem;
+
+        margin-top: 15px;
+    }
+}
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 576px){
+     .hero-section{
+        min-height: 55vh;
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+
+    .adminHeadline{
+
+        font-size: 32px;
+
+        letter-spacing: 4px;
+
+        margin-top: 10%;
+    }
+
+    .headlineLetter{
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        transform: translateY(40px) scale(0.9);
+        text-shadow:
+          0 0 5px rgba(255,255,255,0.1),
+          0 0 12px rgba(255,193,7,0.15);
+    }
+
+    .future-heading{
+        font-size: 1rem;
+        letter-spacing: 10px;
+        margin-top: 10px;
+        padding: 0 10px;
+        line-height: 2.5;
+    }
+}

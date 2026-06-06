@@ -1,0 +1,229 @@
+/* =========================
+   FULL PAGE
+========================= */
+
+.register-page{
+
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #000000,
+        #111111,
+        #1a1a1a
+    );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 15px;
+
+    overflow-x: hidden;
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.register-wrapper{
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    border-radius: 30px;
+
+    padding: 40px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+/* =========================
+   LEFT SECTION
+========================= */
+
+.register-left{
+
+    padding: 20px;
+}
+
+.register-heading{
+
+    color: white;
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.custom-input .MuiInputBase-root{
+
+    color: white !important;
+}
+
+.custom-input label{
+
+    color: #bdbdbd !important;
+}
+
+.custom-input .MuiInput-underline:before{
+
+    border-bottom: 1px solid rgba(255,255,255,0.4) !important;
+}
+
+.custom-input .MuiInput-underline:after{
+
+    border-bottom: 2px solid #ffc107 !important;
+}
+
+/* =========================
+   SWITCH TEXT
+========================= */
+
+.switch-text{
+
+    color: #4dabff;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    margin-top: 25px;
+
+    font-size: 15px;
+
+    transition: 0.3s ease;
+}
+
+.switch-text:hover{
+
+    color: #82cfff;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.register-image{
+
+    width: 100%;
+
+    max-width: 500px;
+
+    height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.MuiButton-contained{
+
+    font-weight: bold !important;
+
+    border-radius: 12px !important;
+
+    padding: 12px !important;
+
+    transition: 0.3s ease !important;
+}
+
+.MuiButton-contained:hover{
+
+    transform: translateY(-3px);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px){
+
+    .register-wrapper{
+
+        padding: 30px;
+    }
+
+    .register-heading{
+
+        font-size: 34px;
+    }
+
+    .register-image{
+
+        height: 380px;
+
+        margin-top: 40px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 576px){
+
+    .register-page{
+
+        padding: 20px 10px;
+    }
+
+    .register-wrapper{
+
+        padding: 20px;
+
+        border-radius: 20px;
+    }
+
+    .register-heading{
+
+        font-size: 28px;
+
+        margin-bottom: 30px;
+    }
+
+    .register-left{
+
+        padding: 10px;
+    }
+
+    .register-image{
+
+        height: 260px;
+
+        margin-top: 30px;
+
+        border-radius: 18px;
+    }
+
+    .switch-text{
+
+        font-size: 14px;
+    }
+
+    .MuiButton-contained{
+
+        padding: 10px !important;
+    }
+}

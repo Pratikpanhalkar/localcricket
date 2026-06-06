@@ -1,0 +1,252 @@
+body {
+  margin: 0;
+  background-color: #000;
+  font-family: Arial, sans-serif;
+}
+
+.A-back{
+  background: transparent;
+  border: 1px solid #444;
+  color: #ccc;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 28px;
+  transition: all 0.2s;
+}
+
+.add-player-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.player-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 40px;
+  background: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.icon-circle {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+}
+
+.player-card h1 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.player-card p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+/* ── field wrapper ── */
+.form-field {
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 11px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+.player-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.player-form input,
+.player-form select {
+  width: 100%;
+  padding: 13px 16px;
+  background: #141414;
+  border: 1px solid #222;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #e0e0e0;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.player-form input::placeholder {
+  color: #444;
+}
+
+.player-form input:focus,
+.player-form select:focus {
+  border-color: #2bb3f3;
+}
+
+.player-form select option {
+  background: #1a1a1a;
+}
+
+/* select arrow wrapper */
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper::after {
+  content: "▾";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.form-divider {
+  height: 1px;
+  background: #1a1a1a;
+  margin: 4px 0;
+}
+
+.player-form button {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: #2bb3f3;
+  letter-spacing: 0.3px;
+  transition: opacity 0.2s;
+}
+
+.player-form button:hover {
+  opacity: 0.88;
+}
+
+.form-footer-note {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #333;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 768px) {
+  .add-player-container {
+    padding: 20px 15px;
+  }
+
+  .player-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 30px 20px;
+  }
+
+  .icon-circle {
+    width: 65px;
+    height: 65px;
+    font-size: 24px;
+  }
+
+  .player-card h1 {
+    font-size: 24px;
+  }
+
+  .player-card p {
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  .player-form input,
+  .player-form select {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .player-form button {
+    font-size: 14px;
+    padding: 13px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 480px) {
+  .add-player-container {
+    padding: 10px;
+  }
+
+  .player-card {
+    width: 100%;
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+
+  .icon-circle {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .player-card h1 {
+    font-size: 20px;
+  }
+
+  .player-card p {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .form-field label {
+    font-size: 10px;
+  }
+
+  .player-form {
+    gap: 12px;
+  }
+
+  .player-form input,
+  .player-form select {
+    padding: 11px 12px;
+    font-size: 13px;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  .player-form button {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .form-footer-note {
+    font-size: 11px;
+  }
+}

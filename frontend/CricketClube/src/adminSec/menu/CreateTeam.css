@@ -1,0 +1,149 @@
+.team{
+    color: white;
+}
+
+.box{
+    height: auto;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.team-icon {
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.team-header{
+    width: 100%;
+    text-align: center;
+}
+
+.team-header h1 {
+    margin-bottom: 8px;
+}
+
+form{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input{
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+form button{
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.team-list{
+    margin-top: 25px;
+}
+
+.team-item{
+    border: 1px solid white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 768px) {
+    .box {
+        width: 100%;
+        max-width: 600px;
+        padding: 25px 20px;
+        margin: 30px auto;
+        box-sizing: border-box;
+    }
+
+    .team-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .team-header h1 {
+        font-size: 28px;
+    }
+
+    form input,
+    form button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 480px) {
+    .box {
+        width: calc(100% - 20px);
+        padding: 20px 15px;
+        margin: 20px auto;
+        border-radius: 12px;
+    }
+
+    .team-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .team-header h1 {
+        font-size: 22px;
+    }
+
+    .team-header p {
+        font-size: 13px;
+    }
+
+    form {
+        gap: 12px;
+    }
+
+    form input {
+        padding: 11px;
+        font-size: 13px;
+        box-sizing: border-box;
+    }
+
+    form button {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .team-item {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
