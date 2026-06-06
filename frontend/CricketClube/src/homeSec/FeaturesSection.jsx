@@ -163,7 +163,7 @@ function FeaturesSection() {
               <div className="card">
 
                 <img
-                  src="slider1.png"
+                  src="/slider1.png"
                   className="card-img-top"
                   alt="card"
                 />
@@ -181,7 +181,7 @@ function FeaturesSection() {
               <div className="card">
 
                 <img
-                  src="slider2.png"
+                  src="/slider2.png"
                   className="card-img-top"
                   alt="card"
                 />
@@ -199,7 +199,7 @@ function FeaturesSection() {
               <div className="card">
 
                 <img
-                  src="slider3.png"
+                  src="/slider3.png"
                   className="card-img-top"
                   alt="card"
                 />
