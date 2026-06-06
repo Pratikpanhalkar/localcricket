@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "./api";
-import "./PlayerProfile.css";
+import "./Playerprofile.css";
 
 function PlayerProfile() {
   const { playerId } = useParams();
