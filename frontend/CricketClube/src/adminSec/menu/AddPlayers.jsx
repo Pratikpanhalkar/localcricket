@@ -6,7 +6,7 @@ import "./Addplayer.css";
 function Addplayers() {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
-
+    const navigate = useNavigate(); 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -62,6 +62,9 @@ function MatchPlayers() {
     <div className="assign-container">
 
       {/* ── left: assign form ── */}
+      <button className="A-back" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
       <div className="assign-card">
         <div className="icon-circle">🏏</div>
         <h1>Assign Players</h1>

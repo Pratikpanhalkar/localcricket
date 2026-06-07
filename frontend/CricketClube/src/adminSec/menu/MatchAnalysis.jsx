@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import api from "./api";import "./MatchAnalysis.css";
+import { useNavigate } from "react-router-dom";
 
 function MatchAnalysis() {
-
+   const navigate = useNavigate(); 
   const [matches, setMatches] = useState([]);
   const [selectedMatch, setSelectedMatch] = useState("");
 
@@ -51,6 +52,9 @@ function MatchAnalysis() {
 
   return (
     <div className="match-analysis-container">
+      <button className="A-back" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
 
       <h1>Match Analysis</h1>
 

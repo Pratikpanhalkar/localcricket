@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "./api";
 import "./Analysis.css";
 
@@ -7,7 +8,7 @@ import "./Analysis.css";
 function Analysis() {
 
     const [data, setData] = useState(null);
-
+      const navigate = useNavigate(); 
     useEffect(() => {
         loadAnalysis();
     }, []);
@@ -31,7 +32,9 @@ function Analysis() {
 
     return (
         <div className="analysis-container">
-
+             <button className="A-back" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
             <h1 className="analysis-title">
                 Cricket Analysis
             </h1>

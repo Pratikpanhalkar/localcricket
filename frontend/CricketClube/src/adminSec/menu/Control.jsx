@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "./api";
 import "./Control.css";
 
 function Control() {
+    const navigate = useNavigate(); 
   const [matches, setMatches] = useState([]);
   const [selectedMatch, setSelectedMatch] = useState("");
 
@@ -22,6 +24,7 @@ function Control() {
   useEffect(() => {
     getMatches();
   }, []);
+  
 
   const getMatches = async () => {
     try {
@@ -209,6 +212,9 @@ function Control() {
   return (
     <div className="control-container">
       <div className="control-card">
+        <button className="A-back" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
         <div className="icon-circle">🏏</div>
         <h1>Match Control</h1>
 
