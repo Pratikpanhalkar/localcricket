@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "../userstyles/register.css";
-import axios from "axios";
+import api from "../adminSec/menu/api";
 import { useNavigate } from "react-router-dom";
 
 // ─── VIEWS ─────────────────────────────────────────────────────────────────────
@@ -42,7 +42,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/register", formdata);
+      await api.post("/register", formdata);
       alert("Register Success! Please log in.");
       switchView("login");
     } catch (err) {
@@ -54,7 +54,7 @@ function Register() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/login", formdata);
+const response = await api.post("/login", formdata);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("adminId", response.data.id);
       localStorage.setItem("adminName", response.data.username);
@@ -71,7 +71,7 @@ function Register() {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:3000/forgot-password", { email: forgotEmail });
+      await api.post("/forgot-password", { email: forgotEmail });
       setView("forgotSent");
     } catch (err) {
       alert(err.response?.data?.message || "Something went wrong. Please try again.");
