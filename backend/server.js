@@ -25,9 +25,22 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.use(express.json());
+const allowedOrigins = process.env.APP_BASE_URL
+  ? process.env.APP_BASE_URL.split(',').map(o => o.trim())
+  : ['http://localhost:5173'];
+
 app.use(cors({
-  origin: process.env.APP_BASE_URL,
-  credentials: true
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, Postman, curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS blocked: ${origin}`));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.set("views", path.join(__dirname, "../views"));
