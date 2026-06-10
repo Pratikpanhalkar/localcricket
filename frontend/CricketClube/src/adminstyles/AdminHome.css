@@ -13,38 +13,6 @@ html, body{
 }
 
 /* =========================
-   HEADLINE
-========================= */
-
-.adminHeadline {
-
-    text-align: center;
-
-    margin-top: 4%;
-
-    color: white;
-
-    font-size: 70px;
-
-    font-weight: bold;
-
-    letter-spacing: 12px;
-
-    font-family: Arial, sans-serif;
-}
-
-.adminHeadline span {
-
-    display: inline-block;
-
-    opacity: 0;
-
-    transform: translateY(40px);
-
-    animation: letterAppear 0.5s forwards;
-}
-
-/* =========================
    BUTTON BOXES
 ========================= */
 
@@ -173,6 +141,146 @@ html, body{
 }
 
 /* =========================
+   WORKFLOW GUIDE SECTION
+========================= */
+
+.workflowSection{
+
+    padding: 80px 20px;
+}
+
+.workflowTitle{
+
+    color: #c8f135;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    margin-bottom: 10px;
+
+    letter-spacing: 1px;
+}
+
+.workflowSubtitle{
+
+    color: #888;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    margin-bottom: 50px;
+}
+
+.workflowSteps{
+
+    max-width: 620px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.workflowStep{
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    background: #111;
+
+    border: 1px solid #2a2a2a;
+
+    border-radius: 14px;
+
+    padding: 22px 26px;
+
+    width: 100%;
+
+    transition: border-color 0.3s ease, transform 0.3s ease;
+
+    cursor: default;
+}
+
+.workflowStep:hover{
+
+    border-color: #c8f135;
+
+    transform: translateX(4px);
+}
+
+.stepNumber{
+
+    background: #c8f135;
+
+    color: #111;
+
+    font-weight: 700;
+
+    font-size: 1rem;
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    margin-top: 2px;
+}
+
+.stepContent h3{
+
+    color: #fff;
+
+    font-size: 1.05rem;
+
+    font-weight: 600;
+
+    margin: 0 0 6px;
+}
+
+.stepContent p{
+
+    color: #888;
+
+    font-size: 0.875rem;
+
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+.stepArrow{
+
+    color: #2a2a2a;
+
+    font-size: 1.1rem;
+
+    margin: 6px 0;
+
+    text-align: center;
+
+    width: 100%;
+}
+
+/* =========================
    SCORE SECTION
 ========================= */
 
@@ -245,28 +353,11 @@ html, body{
     }
 }
 
-@keyframes letterAppear {
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* =========================
    TABLET
 ========================= */
 
 @media (max-width: 992px){
-
-    .adminHeadline{
-
-        font-size: 50px;
-
-        letter-spacing: 8px;
-
-        margin-top: 8%;
-    }
 
     .buts{
 
@@ -295,6 +386,16 @@ html, body{
     .infoSec h1{
 
         font-size: 36px;
+    }
+
+    .workflowTitle{
+
+        font-size: 1.6rem;
+    }
+
+    .workflowSection{
+
+        padding: 60px 20px;
     }
 
     .scoreSection{
@@ -331,15 +432,6 @@ html, body{
 ========================= */
 
 @media (max-width: 576px){
-
-    .adminHeadline{
-
-        font-size: 32px;
-
-        letter-spacing: 4px;
-
-        margin-top: 10%;
-    }
 
     .buts{
 
@@ -389,6 +481,49 @@ html, body{
     .downIcon{
 
         font-size: 30px;
+    }
+
+    .workflowSection{
+
+        padding: 45px 16px;
+    }
+
+    .workflowTitle{
+
+        font-size: 1.3rem;
+    }
+
+    .workflowSubtitle{
+
+        font-size: 14px;
+
+        margin-bottom: 30px;
+    }
+
+    .workflowStep{
+
+        padding: 16px 18px;
+
+        gap: 14px;
+    }
+
+    .stepNumber{
+
+        width: 32px;
+
+        height: 32px;
+
+        font-size: 0.875rem;
+    }
+
+    .stepContent h3{
+
+        font-size: 0.95rem;
+    }
+
+    .stepContent p{
+
+        font-size: 0.8rem;
     }
 
     .scoreSection{
