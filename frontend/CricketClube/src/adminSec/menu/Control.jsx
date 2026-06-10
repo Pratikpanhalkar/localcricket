@@ -4,7 +4,7 @@ import api from "./api";
 import "./Control.css";
 
 function Control() {
-    const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [matches, setMatches] = useState([]);
   const [selectedMatch, setSelectedMatch] = useState("");
 
@@ -24,7 +24,6 @@ function Control() {
   useEffect(() => {
     getMatches();
   }, []);
-  
 
   const getMatches = async () => {
     try {
@@ -118,22 +117,173 @@ function Control() {
       return;
     }
 
-    // Team 1 batting must equal Team 2 bowling
+    const maxBalls = (selectedMatchData?.overs || 0) * 6;
+    const maxWickets = teamAPlayers.length - 1;
+
+    // ── 1. Negative values check ───────────────────────────────────────────
+    const allBatting = [
+      ...teamAPlayers.map((p) => ({ name: p.playerName, data: battingDataA[p.Player_id] })),
+      ...teamBPlayers.map((p) => ({ name: p.playerName, data: battingDataB[p.Player_id] })),
+    ];
+    const allBowling = [
+      ...teamAPlayers.map((p) => ({ name: p.playerName, data: bowlingDataA[p.Player_id] })),
+      ...teamBPlayers.map((p) => ({ name: p.playerName, data: bowlingDataB[p.Player_id] })),
+    ];
+
+    for (const { name, data } of allBatting) {
+      if (!data) continue;
+      if (
+        Number(data.runs) < 0 ||
+        Number(data.balls) < 0 ||
+        Number(data.fours) < 0 ||
+        Number(data.sixes) < 0
+      ) {
+        alert(`${name}: Batting values cannot be negative`);
+        return;
+      }
+    }
+
+    for (const { name, data } of allBowling) {
+      if (!data) continue;
+      if (
+        Number(data.overs) < 0 ||
+        Number(data.runs_given) < 0 ||
+        Number(data.wickets) < 0
+      ) {
+        alert(`${name}: Bowling values cannot be negative`);
+        return;
+      }
+    }
+
+    // ── 2. Total balls check ───────────────────────────────────────────────
+    const teamATotalBalls = teamAPlayers.reduce((total, player) => {
+      return total + Number(battingDataA[player.Player_id]?.balls || 0);
+    }, 0);
+
+    const teamBTotalBalls = teamBPlayers.reduce((total, player) => {
+      return total + Number(battingDataB[player.Player_id]?.balls || 0);
+    }, 0);
+
+    if (teamATotalBalls > maxBalls) {
+      alert(
+        `${selectedMatchData?.team1_name} has played ${teamATotalBalls} balls but max allowed is ${maxBalls} (${selectedMatchData?.overs} overs)`
+      );
+      return;
+    }
+
+    if (teamBTotalBalls > maxBalls) {
+      alert(
+        `${selectedMatchData?.team2_name} has played ${teamBTotalBalls} balls but max allowed is ${maxBalls} (${selectedMatchData?.overs} overs)`
+      );
+      return;
+    }
+
+    // ── 3. Individual player balls check ──────────────────────────────────
+    for (const player of teamAPlayers) {
+      const balls = Number(battingDataA[player.Player_id]?.balls || 0);
+      if (balls > maxBalls) {
+        alert(`${player.playerName} cannot face more than ${maxBalls} balls`);
+        return;
+      }
+    }
+
+    for (const player of teamBPlayers) {
+      const balls = Number(battingDataB[player.Player_id]?.balls || 0);
+      if (balls > maxBalls) {
+        alert(`${player.playerName} cannot face more than ${maxBalls} balls`);
+        return;
+      }
+    }
+
+    // ── 4. Fours & Sixes vs Runs check ────────────────────────────────────
+    for (const player of teamAPlayers) {
+      const data = battingDataA[player.Player_id];
+      if (!data) continue;
+      const boundaryRuns =
+        Number(data.fours || 0) * 4 + Number(data.sixes || 0) * 6;
+      if (boundaryRuns > Number(data.runs || 0)) {
+        alert(
+          `${player.playerName}: Boundary runs (${boundaryRuns}) cannot exceed total runs (${data.runs || 0})`
+        );
+        return;
+      }
+    }
+
+    for (const player of teamBPlayers) {
+      const data = battingDataB[player.Player_id];
+      if (!data) continue;
+      const boundaryRuns =
+        Number(data.fours || 0) * 4 + Number(data.sixes || 0) * 6;
+      if (boundaryRuns > Number(data.runs || 0)) {
+        alert(
+          `${player.playerName}: Boundary runs (${boundaryRuns}) cannot exceed total runs (${data.runs || 0})`
+        );
+        return;
+      }
+    }
+
+    // ── 5. Wickets check ──────────────────────────────────────────────────
+    const teamAWickets = Object.values(bowlingDataB).reduce((total, data) => {
+      return total + Number(data.wickets || 0);
+    }, 0);
+
+    const teamBWickets = Object.values(bowlingDataA).reduce((total, data) => {
+      return total + Number(data.wickets || 0);
+    }, 0);
+
+    if (teamAWickets > maxWickets) {
+      alert(
+        `${selectedMatchData?.team1_name} cannot lose more than ${maxWickets} wickets`
+      );
+      return;
+    }
+
+    if (teamBWickets > maxWickets) {
+      alert(
+        `${selectedMatchData?.team2_name} cannot lose more than ${maxWickets} wickets`
+      );
+      return;
+    }
+
+    // ── 6. Bowling overs check ────────────────────────────────────────────
+    const teamABowlingOvers = teamAPlayers.reduce((total, player) => {
+      return total + Number(bowlingDataA[player.Player_id]?.overs || 0);
+    }, 0);
+
+    const teamBBowlingOvers = teamBPlayers.reduce((total, player) => {
+      return total + Number(bowlingDataB[player.Player_id]?.overs || 0);
+    }, 0);
+
+    if (teamABowlingOvers > selectedMatchData?.overs) {
+      alert(
+        `${selectedMatchData?.team1_name} bowling overs (${teamABowlingOvers}) exceed match overs (${selectedMatchData?.overs})`
+      );
+      return;
+    }
+
+    if (teamBBowlingOvers > selectedMatchData?.overs) {
+      alert(
+        `${selectedMatchData?.team2_name} bowling overs (${teamBBowlingOvers}) exceed match overs (${selectedMatchData?.overs})`
+      );
+      return;
+    }
+
+    // ── 7. Batting runs must equal opponent bowling runs ──────────────────
     if (teamARuns !== teamBBowlingRuns) {
       alert(
-        `${selectedMatchData?.team1_name} batting runs (${teamARuns}) do not match ${selectedMatchData?.team2_name} bowling runs (${teamBBowlingRuns})`
+        `${selectedMatchData?.team1_name} batting runs (${teamARuns}) do not match ${selectedMatchData?.team2_name} bowling runs given (${teamBBowlingRuns})`
       );
       return;
     }
 
-    // Team 2 batting must equal Team 1 bowling
     if (teamBRuns !== teamABowlingRuns) {
       alert(
-        `${selectedMatchData?.team2_name} batting runs (${teamBRuns}) do not match ${selectedMatchData?.team1_name} bowling runs (${teamABowlingRuns})`
+        `${selectedMatchData?.team2_name} batting runs (${teamBRuns}) do not match ${selectedMatchData?.team1_name} bowling runs given (${teamABowlingRuns})`
       );
       return;
     }
 
+    // ── 8. Save to API ────────────────────────────────────────────────────
     try {
       const battingRecords = [
         ...Object.entries(battingDataA).map(([player_id, data]) => ({
@@ -181,7 +331,6 @@ function Control() {
         });
       }
 
-      // FIX: Use calculated runs directly instead of team1Score/team2Score state
       const t1 = teamARuns;
       const t2 = teamBRuns;
       let winner;
@@ -374,7 +523,11 @@ function Control() {
                     type="number"
                     min="0"
                     onChange={(e) =>
-                      updateBowlingA(player.Player_id, "runs_given", e.target.value)
+                      updateBowlingA(
+                        player.Player_id,
+                        "runs_given",
+                        e.target.value
+                      )
                     }
                   />
                 </td>
@@ -383,7 +536,11 @@ function Control() {
                     type="number"
                     min="0"
                     onChange={(e) =>
-                      updateBowlingA(player.Player_id, "wickets", e.target.value)
+                      updateBowlingA(
+                        player.Player_id,
+                        "wickets",
+                        e.target.value
+                      )
                     }
                   />
                 </td>
@@ -421,7 +578,11 @@ function Control() {
                     type="number"
                     min="0"
                     onChange={(e) =>
-                      updateBowlingB(player.Player_id, "runs_given", e.target.value)
+                      updateBowlingB(
+                        player.Player_id,
+                        "runs_given",
+                        e.target.value
+                      )
                     }
                   />
                 </td>
@@ -430,7 +591,11 @@ function Control() {
                     type="number"
                     min="0"
                     onChange={(e) =>
-                      updateBowlingB(player.Player_id, "wickets", e.target.value)
+                      updateBowlingB(
+                        player.Player_id,
+                        "wickets",
+                        e.target.value
+                      )
                     }
                   />
                 </td>
@@ -440,10 +605,20 @@ function Control() {
         </table>
 
         <div className="score-summary">
-          <h3>{selectedMatchData?.team1_name} Calculated Runs : {teamARuns}</h3>
-          <h3>{selectedMatchData?.team2_name} Calculated Runs : {teamBRuns}</h3>
-          <h4>{selectedMatchData?.team1_name} Bowling Runs Given : {teamABowlingRuns}</h4>
-          <h4>{selectedMatchData?.team2_name} Bowling Runs Given : {teamBBowlingRuns}</h4>
+          <h3>
+            {selectedMatchData?.team1_name} Calculated Runs : {teamARuns}
+          </h3>
+          <h3>
+            {selectedMatchData?.team2_name} Calculated Runs : {teamBRuns}
+          </h3>
+          <h4>
+            {selectedMatchData?.team1_name} Bowling Runs Given :{" "}
+            {teamABowlingRuns}
+          </h4>
+          <h4>
+            {selectedMatchData?.team2_name} Bowling Runs Given :{" "}
+            {teamBBowlingRuns}
+          </h4>
         </div>
 
         <h2>Match Result</h2>
@@ -468,7 +643,6 @@ function Control() {
             min="0"
             placeholder="Team 2 Score"
             value={teamBRuns}
-            
             readOnly
           />
           <input
