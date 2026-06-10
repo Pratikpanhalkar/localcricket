@@ -13,8 +13,8 @@ function AdminHome() {
 
         {/* QUICK ACTION BUTTONS */}
         <div className="buts">
-            <div className="butbx1"><p># Create Team</p></div>
             <div className="butbx1"><p># Add Players</p></div>
+            <div className="butbx1"><p># Create Team</p></div>
             <div className="butbx1"><p># Start Match</p></div>
             <div className="butbx1"><p># Analyze Scores</p></div>
         </div>
