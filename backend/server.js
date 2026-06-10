@@ -553,6 +553,6 @@ app.get("/MatchAnalysis/:matchId", authenticateToken, (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Working on port ${PORT}`);
 });
