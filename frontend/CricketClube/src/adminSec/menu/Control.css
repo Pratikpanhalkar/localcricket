@@ -36,16 +36,26 @@ body {
   margin-bottom: 20px;
 }
 
+.control-card h2 {
+  color: white;
+}
+
+.score-summary h3,
+.score-summary h4 {
+  color: #2bb3f3;
+  text-align: center;
+}
+
 .match-select {
   width: 100%;
-    max-width: 350px;
-    display: block;
-    margin: 0 auto 30px auto;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    box-sizing: border-box;
+  max-width: 350px;
+  display: block;
+  margin: 0 auto 30px auto;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 .team-section {
@@ -188,13 +198,6 @@ td input {
     font-size: 12px;
   }
 
-  .score-summary h3,
-  .score-summary h4 {
-     color: #2bb3f3;
-    font-size: 14px;
-    text-align: center;
-  }
-
   .result-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -212,11 +215,12 @@ td input {
    SMALL PHONES
 ========================= */
 @media (max-width: 480px) {
-  .match-select{
+  .match-select {
     width: 100%;
-        font-size: 13px;
-        padding: 10px;
+    font-size: 13px;
+    padding: 10px;
   }
+
   .control-card {
     padding: 10px;
   }
