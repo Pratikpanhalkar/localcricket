@@ -237,6 +237,7 @@ app.post("/forgot-password", (req, res) => {
       };
 
       try {
+        console.log("BREVO KEY:", process.env.BREVO_API_KEY ? "exists, length=" + process.env.BREVO_API_KEY.length : "MISSING");
   const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
