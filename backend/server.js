@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const Brevo = require("@getbrevo/brevo");
 const express = require("express");
 const mysql = require("mysql2");
 const path = require("path");
@@ -74,15 +74,9 @@ connection.connect((err) => {
 });
 
 // ─── NODEMAILER TRANSPORTER ────────────────────────────────────────────────────
-const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.BREVO_USER,
-    pass: process.env.BREVO_PASS,
-  },
-});
+const brevoClient = Brevo.ApiClient.instance;
+brevoClient.authentications["api-key"].apiKey = process.env.BREVO_API_KEY;
+const emailApi = new Brevo.TransactionalEmailsApi();
 // ─── AUTH MIDDLEWARE ───────────────────────────────────────────────────────────
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
@@ -246,14 +240,19 @@ app.post("/forgot-password", (req, res) => {
       };
 
       try {
-        await transporter.sendMail(mailOptions);
-        res.json({
-          message: "If that email is registered, you will receive a reset link shortly.",
-        });
-      } catch (mailErr) {
-        console.error("Email send failed:", mailErr);
-        res.status(500).json({ message: "Failed to send email. Please try again later." });
-      }
+  await emailApi.sendTransacEmail({
+    sender: { email: "pratikspstd@gmail.com", name: "LocalCric" },
+    to: [{ email: user.email }],
+    subject: "LocalCric — Password Reset Request",
+    htmlContent: mailOptions.html,
+  });
+  res.json({
+    message: "If that email is registered, you will receive a reset link shortly.",
+  });
+} catch (mailErr) {
+  console.error("Email send failed:", mailErr);
+  res.status(500).json({ message: "Failed to send email. Please try again later." });
+}
     });
   });
 });
