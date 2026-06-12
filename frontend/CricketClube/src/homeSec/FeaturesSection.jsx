@@ -315,7 +315,7 @@ function FeaturesSection() {
               </h3>
 
               <div className="d-flex justify-content-center mt-5">
-                <Button variant="contained">
+                <Button variant="contained" disabled>
                   Search
                 </Button>
               </div>
