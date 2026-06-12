@@ -15,8 +15,8 @@ const app = express();
 const JWT_SECRET = process.env.JWT_SECRET;
 const SALT_ROUNDS = 10;
 
-const EMAIL_USER = process.env.EMAIL_USER || "your_gmail@gmail.com";
-const EMAIL_PASS = process.env.EMAIL_PASS || "your_gmail_app_password";
+const EMAIL_USER = process.env.EMAIL_USER || "";
+const EMAIL_PASS = process.env.EMAIL_PASS || "";
 const APP_BASE_URL = process.env.APP_BASE_URL || "http://localhost:5173";
 
 // ── Railway assigns a PORT env var; fall back to 3000 locally ────────────────
