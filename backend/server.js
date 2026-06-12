@@ -1,5 +1,5 @@
 require("dotenv").config();
-const Brevo = require("@getbrevo/brevo");
+const { TransactionalEmailsApi, ApiClient, SendSmtpEmail } = require("@getbrevo/brevo");
 const express = require("express");
 const mysql = require("mysql2");
 const path = require("path");
@@ -74,9 +74,9 @@ connection.connect((err) => {
 });
 
 // ─── NODEMAILER TRANSPORTER ────────────────────────────────────────────────────
-const brevoClient = Brevo.ApiClient.instance;
+const brevoClient = ApiClient.instance;
 brevoClient.authentications["api-key"].apiKey = process.env.BREVO_API_KEY;
-const emailApi = new Brevo.TransactionalEmailsApi();
+const emailApi = new TransactionalEmailsApi();
 // ─── AUTH MIDDLEWARE ───────────────────────────────────────────────────────────
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
