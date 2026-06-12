@@ -75,16 +75,14 @@ connection.connect((err) => {
 
 // ─── NODEMAILER TRANSPORTER ────────────────────────────────────────────────────
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
-  family: 4,
   auth: {
-    user: EMAIL_USER,
-    pass: EMAIL_PASS,
+    user: process.env.BREVO_USER,
+    pass: process.env.BREVO_PASS,
   },
 });
-
 // ─── AUTH MIDDLEWARE ───────────────────────────────────────────────────────────
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
