@@ -237,23 +237,26 @@ app.post("/forgot-password", (req, res) => {
       };
 
       try {
-  await fetch("https://api.brevo.com/v3/smtp/email", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "api-key": process.env.BREVO_API_KEY,
-  },
-  body: JSON.stringify({
-    sender: { email: "pratikspstd@gmail.com", name: "LocalCric" },
-    to: [{ email: user.email }],
-    subject: "LocalCric — Password Reset Request",
-    htmlContent: mailOptions.html,
-  }),
-
-});
-res.json({
-  message: "If that email is registered, you will receive a reset link shortly.",
-});
+  const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": process.env.BREVO_API_KEY,
+    },
+    body: JSON.stringify({
+      sender: { email: "pratikspstd@gmail.com", name: "LocalCric" },
+      to: [{ email: user.email }],
+      subject: "LocalCric — Password Reset Request",
+      htmlContent: mailOptions.html,
+    }),
+  });
+  const brevoData = await brevoRes.json();
+  console.log("Brevo response:", JSON.stringify(brevoData));
+  if (!brevoRes.ok) {
+    console.error("Brevo error:", brevoData);
+    return res.status(500).json({ message: "Failed to send email." });
+  }
+  res.json({ message: "If that email is registered, you will receive a reset link shortly." });
 } catch (mailErr) {
   console.error("Email send failed:", mailErr);
   res.status(500).json({ message: "Failed to send email. Please try again later." });
